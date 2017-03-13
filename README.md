@@ -2,65 +2,69 @@
 ### Exemplo de modificação de um flappybird, utilizando LibGDX
 
 Baixar a libgdx em: https://libgdx.badlogicgames.com/download.html
-Neste passo a passo, a versão utilizada foi a libgdx-1.6.1
+
+### Neste passo a passo, a versão utilizada foi a libgdx-1.6.1
 
 Quando executar o arquivo gdx-setup.jar, irá ser exibida uma janela como esta:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23878992/41bb5f34-0829-11e7-97cd-469209e89186.png)
 
-
- 
-
 Fazer o preenchimento das informações da seguinte forma:
- 
+ ![image](https://cloud.githubusercontent.com/assets/8375336/23879113/e975757a-0829-11e7-9e41-649a2ef22738.png)
 
-Após o preenchimento dos campos, acionar o botão “Generate”.
- 
-Clicar em “SIM”
- 
-“SIM” para esta mensagem também.
+Após o preenchimento dos campos, acionar o botão “Generate” e clicar em “SIM”:
+![image](https://cloud.githubusercontent.com/assets/8375336/23879133/02f8ea0e-082a-11e7-9225-04e1a0a506f2.png)
+“SIM” para esta mensagem também:
+![image](https://cloud.githubusercontent.com/assets/8375336/23879138/100fa8cc-082a-11e7-9017-9a85a892c06f.png)
 
+## Android-studio
 Após o projeto gerado, basta abri-lo no android-studio.
 A estrutura inicial do projeto é a seguinte:
- 
-Um pacote android, um desktop (onde selecionamos que nosso jogo iria ser executado), e o pacote core, onde ficarão as codificações comuns a todas as plataformas. 
+![image](https://cloud.githubusercontent.com/assets/8375336/23879161/2f0e7cf8-082a-11e7-8f24-ef6f060c7349.png)
 
+Um pacote android, um desktop (onde selecionamos que nosso jogo iria ser executado), e o pacote core, onde ficarão as codificações comuns a todas as plataformas. 
 Para testarmos as codificações, enquanto estamos construindo o projeto, podemos direcionar o projeto a executar em desktop:
 Podemos ir em Edit configurations, como na imagem que segue:
+![image](https://cloud.githubusercontent.com/assets/8375336/23879177/41c8d6f4-082a-11e7-8ac1-8b0dc7f3310c.png)
  
 
 Adicionamos uma nova configuração:
+![image](https://cloud.githubusercontent.com/assets/8375336/23879187/4dfa65e6-082a-11e7-9861-07e2095bea0e.png)
  
 Selecionamos a opção “Application”
- 
+![image](https://cloud.githubusercontent.com/assets/8375336/23879197/5acedf18-082a-11e7-9486-5c766737e839.png)
+
 Nomeamos a configuração como “Desktop” e selecionamos a classe DesktopLauncher em Mainclass:
+![image](https://cloud.githubusercontent.com/assets/8375336/23879204/66ab8674-082a-11e7-898b-fa0a86e4e7b9.png)
+
  
 Para o diretório de trabalho, selecionaremos a pasta “assets” do android, do nosso projeto:
+![image](https://cloud.githubusercontent.com/assets/8375336/23879217/785137c0-082a-11e7-8d9a-77eff019ed7d.png)
  
 Por fim, em module, selecionamos desktop
- 
-
- 
+![image](https://cloud.githubusercontent.com/assets/8375336/23879223/84a98d92-082a-11e7-89dd-ab6ca8c20154.png)
+![image](https://cloud.githubusercontent.com/assets/8375336/23879235/93648daa-082a-11e7-8836-7669f117342c.png)
 
 Ao executar nosso projeto, temos uma tela inicial, com a imagem da badlogic games
+![image](https://cloud.githubusercontent.com/assets/8375336/23879243/a117451e-082a-11e7-9802-33d45fba1f8a.png)
 
- 
-
-Agora vamos ao código
+## Agora vamos ao código
 
 Nosso jogo terá três estados: 
-	O estado de menu, em que o usuário deve realizar uma ação na tela para que possamos entrar no jogo;
-	O estado de jogo, propriamente dito;
-	E o estado de fim de jogo (Quando o “player” morre – gam eover).
+-	O estado de menu, em que o usuário deve realizar uma ação na tela para que possamos entrar no jogo;
+-	O estado de jogo, propriamente dito;
+-	E o estado de fim de jogo (Quando o “player” morre – gam eover).
 
-Começaremos então a codificação dos estados, criando um novo pacote chamado “estados”:
- 
+Começaremos então a codificação dos estados, criando um novo pacote chamado “estados” - em que ficarão os cenários do jogo:
+![image](https://cloud.githubusercontent.com/assets/8375336/23879308/fbad106c-082a-11e7-90c3-a8f0d0eb6497.png)
+
 Neste exemplo, deixarei o nome dos pacotes simples, para ganharmos tempo.
 Criaremos então, a princípio, duas classes.
 A primeira, a classe abstrata chamada “Estado” – que será a base dos nossos estados e a segunda: um gerenciador de Estados.
- 
+![image](https://cloud.githubusercontent.com/assets/8375336/23879329/20bcd18a-082b-11e7-8c60-751fcfe0b430.png)
 
 Mais explicações, nos comentários dos códigos:
-Estado.java
+### Estado.java
+```java
 package estados;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -125,9 +129,11 @@ public abstract class Estado {
 
 }
 
+```
 
+### GerenciadorEstado.java
 
-GerenciadorEstado.java
+```java
 package br.com.trbc.flappyghost.estados;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -181,16 +187,18 @@ public class GerenciadorEstado {
 
     }
 
-
-
-
-
 }
+
+``` 
 
 
 Após a criação da nossa classe abstrata de Estados e nosso gerenciador (Que nada mais é do que uma pilha de estados (Cenários) do nosso jogo, devemos criar os cenários propriamente ditos. Um para o menu – onde o usuário deve realizar  uma ação (Touch) para iniciar e o outro é o cenário do game.
+
 Primeiro vamos criar a classe do menu, que vai ser chamada no início do nosso game.
-MenuEstado.java
+
+### EstadoMenu.java
+
+```java
 package br.com.trbc.flappyghost.estados;
 
 import com.badlogic.gdx.Gdx;
@@ -219,7 +227,7 @@ public class EstadoMenu extends Estado {
         // caso o evento touch seja realizado
         // seta o estado do game(cenario) com o estado de jogo
         if (Gdx.input.justTouched()) {
-            gerenciadorEstado.set(new EstadoJogo(gerenciadorEstado));
+            gerenciadorEstado.set(new EstadoJogo(gerenciadorEstado, sb));
 
         }
 
@@ -255,8 +263,8 @@ public class EstadoMenu extends Estado {
 
     // construtor do menu
     // incializa os elementos do menu
-    public EstadoMenu(GerenciadorEstado gerenciadorEstado) {
-        super(gerenciadorEstado);
+    public EstadoMenu(GerenciadorEstado gerenciadorEstado, SpriteBatch sb) {
+        super(gerenciadorEstado, sb);
         cam.setToOrtho(false, FlappyGhost.WIDTH / 2, FlappyGhost.HEIGHT / 2);
         background = new Texture("bg.png");
         playButton = new Texture("playbtn.png");
@@ -274,22 +282,28 @@ public class EstadoMenu extends Estado {
 
 }
 
+```
 
 Note que em nosso handleInput, quando o usuário realiza uma ação na tela (touch), um novo cenário é inserido (O cenário de gameplay propriamente dito)
+
+```java
 if (Gdx.input.justTouched()) {
     gerenciadorEstado.set(new EstadoJogo(gerenciadorEstado));
 
 }
-
-
+```
 
 Vamos criar também a classe de gameplay apenas extendendo a classe Estado e um construtor padrão.
 Antes da codificação da nossa classe de gameplay, vamos criar nossos personagens e objetos que irão interagir no game.
 Dentro do pacore principal do nosso “core”, vamos criar um pacote chamado “sprites”
+
+![image](https://cloud.githubusercontent.com/assets/8375336/23879429/c87b7ff2-082b-11e7-97ec-932b3c99f1c8.png)
  
 
 Então vamos criar uma classe Java chamada “Animacao”. Essa classe será responsável pela animação do nosso personagem principal.
-Animacao.java
+
+### Animacao.java
+```java
 package br.com.trbc.flappyghost.sprites;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -372,10 +386,14 @@ public class Animacao {
 
 }
 
+```
 
 Com a classe de animação codificada, passamos agora para a codificação do personagem principal do game (Ghost).
 No pacote “sprites”, vamos criar uma classe chamada Ghost.
-Ghost.java
+
+### Ghost.java
+
+```java
 package br.com.trbc.flappyghost.sprites;
 
 import com.badlogic.gdx.Gdx;
@@ -504,7 +522,7 @@ public class Ghost {
         jump.play(0.5f);
     }
 
-    public Rectangle getBounds() {
+    public Rectangle getLimites() {
         return limites;
     }
 
@@ -518,10 +536,15 @@ public class Ghost {
 
 }
 
+```
 
 Agora precisamos criar os objetos que irão colidir com nosso personagem. Esses objetos que vão dar a dificuldade ao jogo.
+
 No pacote “sprites” vamos adicionar uma nova classe chamada Toten
-Toten.java
+
+### Toten.java
+
+```java
 package br.com.trbc.flappyghost.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
@@ -643,15 +666,15 @@ public class Toten {
         bottomToten.dispose();
     }
 
-
-
-
 }
 
+```
 
 Agora vamos voltar ao desenvolvimento da classe EstadoJogo.java.
 Nela, vamos codificar toda a interação entre as ações do usuário, o personagem principal e os objetos do cenário.
-EstadoJogo.java
+
+### EstadoJogo.java
+```java
 package br.com.trbc.flappyghost.estados;
 
 import com.badlogic.gdx.Gdx;
@@ -661,6 +684,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 import br.com.trbc.flappyghost.FlappyGhost;
+import br.com.trbc.flappyghost.display.Hud;
 import br.com.trbc.flappyghost.sprites.Ghost;
 import br.com.trbc.flappyghost.sprites.Toten;
 
@@ -704,14 +728,15 @@ public class EstadoJogo extends Estado {
     // um array de totens
     private Array<Toten> totens;
 
+    private Hud hud;
 
     /*
     *  O construtor do estado do jogo recebe o gerenciador de cenarios
     *  e inicializa os objetos para o game
     * */
-    public EstadoJogo(GerenciadorEstado gerenciadorEstado) {
+    public EstadoJogo(GerenciadorEstado gerenciadorEstado, SpriteBatch sb) {
         // realiza a chamada ao construtor da superclasse
-        super(gerenciadorEstado);
+        super(gerenciadorEstado, sb);
         // inicia o personagem na posicao 50 x 300
         ghost = new Ghost(50,300);
 
@@ -738,6 +763,9 @@ public class EstadoJogo extends Estado {
 
             totens.add(new Toten(i * (TOTEN_SPACING + Toten.TOTEN_WIDTH)));
         }
+
+        this.sb = sb;
+        hud = new Hud(sb);
 
     }
 
@@ -767,40 +795,52 @@ public class EstadoJogo extends Estado {
 
         // verifica os totens criados
         for (int i = 0; i< totens.size; i++) {
-            Toten Toten =  totens.get(i);
+            Toten toten =  totens.get(i);
 
 
             // se o toten passou da area de exibicao da camera
             // reposiciona o mesmo
-            if ((cam.position.x - (cam.viewportWidth /2)) > Toten.getPosTopToten().x + Toten.getTopToten().getWidth() ) {
+            if ((cam.position.x - (cam.viewportWidth /2)) > toten.getPosTopToten().x + toten.getTopToten().getWidth() ) {
 
-                Toten.reposiciona(Toten.getPosTopToten().x + ((Toten.TOTEN_WIDTH + TOTEN_SPACING) * TOTEN_COUNT));
+                toten.reposiciona(toten.getPosTopToten().x + ((Toten.TOTEN_WIDTH + TOTEN_SPACING) * TOTEN_COUNT));
+                hud.addScore(100);
 
             }
 
             // verifica a colisao.. se o player colidiu com o toten em questao,
             // reinicia o cenario
-            if (Toten.colide(ghost.getBounds())) {
-                gerenciadorEstado.set(new EstadoJogo(gerenciadorEstado));
+            if (toten.colide(ghost.getLimites())) {
+                gerenciadorEstado.set(new EstadoJogo(gerenciadorEstado, sb));
 
             }
+
 
         }
 
         // caso o player tenha caido ate o chao do game,
         // reinicia o cenario
         if (ghost.getPosicao().y <= ground.getHeight() + GROUND_Y_OFFSET) {
-            gerenciadorEstado.set(new EstadoJogo(gerenciadorEstado));
+            gerenciadorEstado.set(new EstadoJogo(gerenciadorEstado, sb));
 
         }
+
+
         cam.update();
+        hud.update(dt);
 
     }
 
     @Override
     public void render(SpriteBatch sb) {
+
+
+
         sb.setProjectionMatrix(cam.combined);
         sb.begin();
+
+
+
+
         sb.draw(bg, cam.position.x - (cam.viewportWidth / 2), 0);
         sb.draw(ghost.getGhost(), ghost.getPosicao().x, ghost.getPosicao().y);
 
@@ -813,11 +853,15 @@ public class EstadoJogo extends Estado {
         }
 
 
+
+
         sb.draw(ground, groundPos1.x, groundPos1.y);
         sb.draw(ground, groundPos2.x, groundPos2.y);
 
 
         sb.end();
+
+        hud.draw();
 
     }
 
@@ -851,9 +895,120 @@ public class EstadoJogo extends Estado {
 
 }
 
+```
 
 Por fim, iremos adicionar uma pontuação ao game. Para isso iremos utilizar um HUD (heads up display) para exibição dos dados.
 No projeto, vamos adicionar um novo pacote chamado “display” e uma nova classe java, chamada “Hud”
+![image](https://cloud.githubusercontent.com/assets/8375336/23879542/9bf158a2-082c-11e7-8ce0-3ba271fca684.png)
+
+Hud.java
+```java
+package br.com.trbc.flappyghost.display;
+
+import com.badlogic.gdx.graphics.Color;
+
+
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Disposable;
+import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+
+import br.com.trbc.flappyghost.FlappyGhost;
+
+
+/**
+ * Created by turboc on 23/02/17.
+ */
+public class Hud extends Stage {
+
+    private Viewport viewport;
+
+    private Integer worldTimer;
+    private float   timeCount;
+    private Integer score;
+
+    private SpriteBatch sb;
+
+    Label scoreLabel;
+    Label timeLabel;
+    Label incrementaTempo;
+    Label pontosLabel;
+
+    public Hud (SpriteBatch sb) {
+
+
+        viewport = new FitViewport(FlappyGhost.WIDTH, FlappyGhost.HEIGHT, new OrthographicCamera());
+        this.sb = sb;
+        worldTimer = 0;
+        timeCount = 0;
+        score      = 0;
+
+
+        Table table = new Table();
+
+        table.top();
+        table.setFillParent(true);
+
+
+        incrementaTempo =
+                new Label(String.format("%05d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+
+        scoreLabel =
+                new Label(String.format("%05d", score), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+
+        timeLabel =
+                new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        pontosLabel =
+                new Label("SCORE", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+
+        table.add(timeLabel).expandX().padTop(10);
+        table.add(incrementaTempo).expandX();
+
+        table.row();
+
+        table.add(pontosLabel).expandX();
+        table.add(scoreLabel).expandX();
+
+        addActor(table);
+
+
+
+    }
+
+    public void update (float dt) {
+
+        timeCount += dt;
+        if (timeCount >= 1) {
+            worldTimer++;
+            incrementaTempo.setText(String.format("%05d", worldTimer));
+            timeCount = 0;
+        }
+
+
+    }
+
+    public void addScore(int value) {
+
+        score += value;
+        scoreLabel.setText(String.format("%05d", score));
+    }
+
+
+
+
+}
+
+
+
+```
  
 
 
