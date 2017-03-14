@@ -57,25 +57,33 @@ A estrutura inicial do projeto é a seguinte:
 Um pacote android, um desktop (onde selecionamos que nosso jogo iria ser executado), e o pacote core, onde ficarão as codificações comuns a todas as plataformas. 
 Para testarmos as codificações, enquanto estamos construindo o projeto, podemos direcionar o projeto a executar em desktop:
 Podemos ir em Edit configurations, como na imagem que segue:
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879177/41c8d6f4-082a-11e7-8ac1-8b0dc7f3310c.png)
  
 Adicionamos uma nova configuração:
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879187/4dfa65e6-082a-11e7-9861-07e2095bea0e.png)
  
 Selecionamos a opção “Application”:
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879197/5acedf18-082a-11e7-9486-5c766737e839.png)
 
 Nomeamos a configuração como “Desktop” e selecionamos a classe DesktopLauncher em Mainclass:
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879204/66ab8674-082a-11e7-898b-fa0a86e4e7b9.png)
  
 Para o diretório de trabalho, selecionaremos a pasta “assets” do android, do nosso projeto:
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879217/785137c0-082a-11e7-8d9a-77eff019ed7d.png)
  
 Por fim, em module, selecionamos desktop:
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879223/84a98d92-082a-11e7-89dd-ab6ca8c20154.png)
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879235/93648daa-082a-11e7-8836-7669f117342c.png)
 
 Ao executar nosso projeto, temos uma tela inicial, com a imagem da badlogic games:
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879243/a117451e-082a-11e7-9802-33d45fba1f8a.png)
 
 Agora, vamos ao código
@@ -88,11 +96,13 @@ Nosso jogo terá dois estados:
 -	Quando o personagem colide com os totens ou colide com o chão, o jogo é reiniciado.
 
 Começaremos então a codificação dos estados, criando um novo pacote chamado “estados” - em que ficarão os cenários do jogo:
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879308/fbad106c-082a-11e7-90c3-a8f0d0eb6497.png)
 
 Neste exemplo, deixarei o nome dos pacotes simples, para ganharmos tempo.
 Criaremos então, a princípio, duas classes.
 A primeira, a classe abstrata chamada “Estado” – que será a base dos nossos estados e a segunda: um gerenciador de Estados.
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879329/20bcd18a-082b-11e7-8c60-751fcfe0b430.png)
 
 Mais explicações, nos comentários dos códigos:
