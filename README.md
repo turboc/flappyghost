@@ -1081,22 +1081,26 @@ No arquivo Manifest do diretório android, vamos editar isso:
 
 ![image](https://cloud.githubusercontent.com/assets/8375336/23904932/55cc5792-08a8-11e7-9e28-2296c768e23d.png)
 
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23904988/7b7454b8-08a8-11e7-91bc-6a90ca11bdc1.png)
 
+
 Vamos alterar o target da executação para o android:
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23905170/f5ad6364-08a8-11e7-8687-85317da02cef.png)
 
 Clicamos em Run ![image](https://cloud.githubusercontent.com/assets/8375336/23905400/b6590f64-08a9-11e7-8163-0206b0f3e604.png)
 
+
 Neste caso, utilizarei o próprio dispositivo Android:
 
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23905670/8d3f29fa-08aa-11e7-9d64-d05d24fa6a13.png)
+
 
 E temos o nosso game rodando:
 
 ![image](https://cloud.githubusercontent.com/assets/8375336/23905747/d0c68574-08aa-11e7-8973-35b84e5388ba.png)
-
-
 
 
 
