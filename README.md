@@ -1,9 +1,42 @@
 # Flappyghost
 ### Exemplo de modificação de um flappybird, utilizando LibGDX
 
-Baixar a libgdx em: https://libgdx.badlogicgames.com/download.html
 
-### Neste passo a passo, a versão utilizada foi a libgdx-1.6.1
+### Introdução à LibGDX 
+
+Este passo a passo tem a finalidade de introduzir ao desenvolvedor algumas características do desenvolvimento de games,
+utilizando a LibGDX. 
+
+Esta iniciativa deu-se pela carência de materiais sobre essa biblioteca em língua portuguesa, o que a torna pouco difundida no cenário nacional, com escaço conteúdo introdutório. O incentivo do estudo e utilização dessa biblioteca pode nos trazer, futuramente, o desenvolvimento de guias e materiais avançados em nossa língua mãe.
+
+A LibGDX é um framework open-source para desenvolvimento de jogos multiplataforma. É desenvolvida em Java e carrega alguns componentes escritos em C/C++, para ganho de desempenho em determinadas tarefas. 
+
+Um dos destaques do LibGDX é a capacidade de executar e depurar seu código na área de trabalho como um aplicativo nativo. Isso
+permite que você use confortavelmente as funções da Máquina Virtual Java (JVM), Tais como Code Hot Swapping, que por sua vez permite que você veja imediatamente o efeito de Seu código alterado em tempo de execução. Portanto, reduzirá significativamente o tempo
+para encontrar e corrigir erros desagradáveis.
+
+Outro ponto importante é entender que o LibGDX é um framework e não uma engine, que normalmente vem com muitas ferramentas, como um editor de nível completo e um ambiente de desenvolvimento totalmente predefinido para o desenvolvimento, utilizando essa biblioteca. 
+Isso pode soar como uma desvantagem no início, mas realmente se revela uma vantagem que lhe permite definir livremente o seu próprio
+Fluxo de trabalho para cada projeto. Por exemplo, LibGDX permite que você vá de nível baixo para que você
+possa adicionar suas próprias chamadas OpenGL, caso necessário.
+No entanto, na maioria das vezes, deve ser suficiente para permanecer de alto nível e usar as funcionalidades já embutidas de LibGDX para realizar suas idéias.[(Balakrishnan, 2015, p10)](https://www.packtpub.com/game-development/learning-libgdx-game-development-second-edition).
+
+Iremos aqui abordar o desenvolvimento passoa passo de um jogo simples, estilo flappybird.
+Esse passo a passo foi baseado no artigo de [Bren Aureli](https://github.com/BrentAureli/FlappyDemo), com algumas modificações.
+Sons, imagens e adição de um Hud, para a contagem de pontos. Procuramos, aqui, seguir um modelo prático de desenvolvimento, com explicações mais detalhadas nos pontos importantes do código (jogo comentado linha-a-linha).
+
+_Os assets do game podem ser baixados/modificados ou criados de acordo com a vontade do desenvolvedor._
+_foram adicionados aqui a critério de prototipagem (estão disponíveis na pasta assets do diretório "android", do projeto)._
+
+
+Então, vamos à prática.
+
+# Ambiente utilizado
+
+* [Android-Studio](https://developer.android.com/studio/index.html?hl=pt-br)
+* [LibGDX] (https://libgdx.badlogicgames.com/download.html)
+
+### preparação do projeto
 
 Quando executar o arquivo gdx-setup.jar, irá ser exibida uma janela como esta:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23878992/41bb5f34-0829-11e7-97cd-469209e89186.png)
@@ -35,7 +68,6 @@ Selecionamos a opção “Application”
 
 Nomeamos a configuração como “Desktop” e selecionamos a classe DesktopLauncher em Mainclass:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879204/66ab8674-082a-11e7-898b-fa0a86e4e7b9.png)
-
  
 Para o diretório de trabalho, selecionaremos a pasta “assets” do android, do nosso projeto:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879217/785137c0-082a-11e7-8d9a-77eff019ed7d.png)
@@ -47,12 +79,14 @@ Por fim, em module, selecionamos desktop
 Ao executar nosso projeto, temos uma tela inicial, com a imagem da badlogic games
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879243/a117451e-082a-11e7-9802-33d45fba1f8a.png)
 
-## Agora vamos ao código
+Agora, vamos ao código
 
-Nosso jogo terá três estados: 
+## Codificação
+
+Nosso jogo terá dois estados: 
 -	O estado de menu, em que o usuário deve realizar uma ação na tela para que possamos entrar no jogo;
 -	O estado de jogo, propriamente dito;
--	E o estado de fim de jogo (Quando o “player” morre – gam eover).
+-	Quando o personagem colide com os totens ou colide com o chão, o jogo é reiniciado.
 
 Começaremos então a codificação dos estados, criando um novo pacote chamado “estados” - em que ficarão os cenários do jogo:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879308/fbad106c-082a-11e7-90c3-a8f0d0eb6497.png)
@@ -908,35 +942,41 @@ package br.com.trbc.flappyghost.display;
 import com.badlogic.gdx.graphics.Color;
 
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.Disposable;
-import com.badlogic.gdx.utils.viewport.FillViewport;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
-import br.com.trbc.flappyghost.FlappyGhost;
 
 
 /**
  * Created by turboc on 23/02/17.
  */
+
+/*
+*  Classe Hud
+*  classe responsavel pelos meotdos de exibicao do tempo e da pontuacao do jogo
+*
+* */
 public class Hud extends Stage {
 
-    private Viewport viewport;
 
-    private Integer worldTimer;
+    //contador dr campo
+    private Integer timer;
+    //variavel auxiliar de contagem de tempo
     private float   timeCount;
+    // contador da pontuacao
     private Integer score;
+
 
     private SpriteBatch sb;
 
+    /*
+    *
+    *  Labels a serem exibidas
+    * */
     Label scoreLabel;
     Label timeLabel;
     Label incrementaTempo;
@@ -944,22 +984,19 @@ public class Hud extends Stage {
 
     public Hud (SpriteBatch sb) {
 
-
-        viewport = new FitViewport(FlappyGhost.WIDTH, FlappyGhost.HEIGHT, new OrthographicCamera());
         this.sb = sb;
-        worldTimer = 0;
+        timer = 0;
         timeCount = 0;
         score      = 0;
 
-
+        // cria uma tabela no display e posiciona ela no topo da tela
         Table table = new Table();
-
         table.top();
         table.setFillParent(true);
 
-
+        // configura os labels
         incrementaTempo =
-                new Label(String.format("%05d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+                new Label(String.format("%05d", timer), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
         scoreLabel =
                 new Label(String.format("%05d", score), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
@@ -969,6 +1006,8 @@ public class Hud extends Stage {
         pontosLabel =
                 new Label("SCORE", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
+
+        // adiciona os itens na tela
         table.add(timeLabel).expandX().padTop(10);
         table.add(incrementaTempo).expandX();
 
@@ -977,38 +1016,41 @@ public class Hud extends Stage {
         table.add(pontosLabel).expandX();
         table.add(scoreLabel).expandX();
 
+
+        //addActor adiciona a tabela no stage
         addActor(table);
-
-
 
     }
 
+
+    // update serve como contador de tempo
     public void update (float dt) {
 
         timeCount += dt;
         if (timeCount >= 1) {
-            worldTimer++;
-            incrementaTempo.setText(String.format("%05d", worldTimer));
+            timer++;
+            incrementaTempo.setText(String.format("%05d", timer));
             timeCount = 0;
         }
 
-
     }
 
+    // metodo responsavel por adicionar pontos
     public void addScore(int value) {
-
         score += value;
         scoreLabel.setText(String.format("%05d", score));
     }
 
 
-
-
 }
 
 
-
 ```
+
+Ao rodar nosso game, ficará com o seguinte aspecto:
+![image](https://cloud.githubusercontent.com/assets/8375336/23902207/168604e2-089f-11e7-9ad7-3c61dbbbfa1e.png)
+![image](https://cloud.githubusercontent.com/assets/8375336/23902220/28b83a18-089f-11e7-94ba-a1f919a3350a.png)
+
  
 
 
