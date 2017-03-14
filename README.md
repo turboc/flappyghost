@@ -55,7 +55,7 @@ Clicar em “SIM” para esta mensagem também:
 
 ## Android-studio
 Após o projeto gerado, basta abri-lo no android-studio.
-A estrutura inicial do projeto é a seguinte:
+A estrutura inicial do é a seguinte:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879161/2f0e7cf8-082a-11e7-8f24-ef6f060c7349.png)
 
 Um pacote android, um desktop (onde selecionamos que nosso jogo iria ser executado), e o pacote core, onde ficarão as codificações comuns a todas as plataformas. 
