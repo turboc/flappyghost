@@ -34,7 +34,7 @@ Então, vamos à prática.
 # Ambiente utilizado
 
 * [Android-Studio](https://developer.android.com/studio/index.html?hl=pt-br)
-* [LibGDX] (https://libgdx.badlogicgames.com/download.html)
+* [LibGDX](https://libgdx.badlogicgames.com/download.html)
 
 ### preparação do projeto
 
@@ -42,7 +42,7 @@ Quando executar o arquivo gdx-setup.jar, irá ser exibida uma janela como esta:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23878992/41bb5f34-0829-11e7-97cd-469209e89186.png)
 
 Fazer o preenchimento das informações da seguinte forma:
- ![image](https://cloud.githubusercontent.com/assets/8375336/23879113/e975757a-0829-11e7-9e41-649a2ef22738.png)
+![image](https://cloud.githubusercontent.com/assets/8375336/23879113/e975757a-0829-11e7-9e41-649a2ef22738.png)
 
 Após o preenchimento dos campos, acionar o botão “Generate” e clicar em “SIM”:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879133/02f8ea0e-082a-11e7-9225-04e1a0a506f2.png)
@@ -59,11 +59,10 @@ Para testarmos as codificações, enquanto estamos construindo o projeto, podemo
 Podemos ir em Edit configurations, como na imagem que segue:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879177/41c8d6f4-082a-11e7-8ac1-8b0dc7f3310c.png)
  
-
 Adicionamos uma nova configuração:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879187/4dfa65e6-082a-11e7-9861-07e2095bea0e.png)
  
-Selecionamos a opção “Application”
+Selecionamos a opção “Application”:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879197/5acedf18-082a-11e7-9486-5c766737e839.png)
 
 Nomeamos a configuração como “Desktop” e selecionamos a classe DesktopLauncher em Mainclass:
@@ -72,11 +71,11 @@ Nomeamos a configuração como “Desktop” e selecionamos a classe DesktopLaun
 Para o diretório de trabalho, selecionaremos a pasta “assets” do android, do nosso projeto:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879217/785137c0-082a-11e7-8d9a-77eff019ed7d.png)
  
-Por fim, em module, selecionamos desktop
+Por fim, em module, selecionamos desktop:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879223/84a98d92-082a-11e7-89dd-ab6ca8c20154.png)
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879235/93648daa-082a-11e7-8836-7669f117342c.png)
 
-Ao executar nosso projeto, temos uma tela inicial, com a imagem da badlogic games
+Ao executar nosso projeto, temos uma tela inicial, com a imagem da badlogic games:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879243/a117451e-082a-11e7-9802-33d45fba1f8a.png)
 
 Agora, vamos ao código
@@ -97,6 +96,8 @@ A primeira, a classe abstrata chamada “Estado” – que será a base dos noss
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879329/20bcd18a-082b-11e7-8c60-751fcfe0b430.png)
 
 Mais explicações, nos comentários dos códigos:
+
+
 ### Estado.java
 ```java
 package estados;
@@ -224,7 +225,6 @@ public class GerenciadorEstado {
 }
 
 ``` 
-
 
 Após a criação da nossa classe abstrata de Estados e nosso gerenciador (Que nada mais é do que uma pilha de estados (Cenários) do nosso jogo, devemos criar os cenários propriamente ditos. Um para o menu – onde o usuário deve realizar  uma ação (Touch) para iniciar e o outro é o cenário do game.
 
@@ -935,7 +935,8 @@ Por fim, iremos adicionar uma pontuação ao game. Para isso iremos utilizar um 
 No projeto, vamos adicionar um novo pacote chamado “display” e uma nova classe java, chamada “Hud”
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879542/9bf158a2-082c-11e7-8ce0-3ba271fca684.png)
 
-Hud.java
+## Hud.java
+
 ```java
 package br.com.trbc.flappyghost.display;
 
@@ -1048,10 +1049,10 @@ public class Hud extends Stage {
 ```
 
 Ao rodar nosso game, ficará com o seguinte aspecto:
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23902207/168604e2-089f-11e7-9ad7-3c61dbbbfa1e.png)
 ![image](https://cloud.githubusercontent.com/assets/8375336/23902220/28b83a18-089f-11e7-94ba-a1f919a3350a.png)
 
- 
 
-
+Para finalizar, vamos configurar o projeto para rodar em dispositivos android.
 
