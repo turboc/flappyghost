@@ -45,8 +45,12 @@ Fazer o preenchimento das informações da seguinte forma:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879113/e975757a-0829-11e7-9e41-649a2ef22738.png)
 
 Após o preenchimento dos campos, acionar o botão “Generate” e clicar em “SIM”:
+
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879133/02f8ea0e-082a-11e7-9225-04e1a0a506f2.png)
-“SIM” para esta mensagem também:
+
+Clicar em “SIM” para esta mensagem também:
+
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879138/100fa8cc-082a-11e7-9017-9a85a892c06f.png)
 
 ## Android-studio
