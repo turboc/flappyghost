@@ -21,7 +21,7 @@ Fluxo de trabalho para cada projeto. Por exemplo, LibGDX permite que você vá d
 possa adicionar suas próprias chamadas OpenGL, caso necessário.
 No entanto, na maioria das vezes, deve ser suficiente para permanecer de alto nível e usar as funcionalidades já embutidas de LibGDX para realizar suas idéias.[(Balakrishnan, 2015, p10)](https://www.packtpub.com/game-development/learning-libgdx-game-development-second-edition).
 
-Iremos aqui abordar o desenvolvimento passoa passo de um jogo simples, estilo flappybird.
+Iremos aqui abordar o desenvolvimento pass a passo de um jogo simples, estilo flappybird.
 Esse passo a passo foi baseado no artigo de [Bren Aureli](https://github.com/BrentAureli/FlappyDemo), com algumas modificações.
 Sons, imagens e adição de um Hud, para a contagem de pontos. Procuramos, aqui, seguir um modelo prático de desenvolvimento, com explicações mais detalhadas nos pontos importantes do código (jogo comentado linha-a-linha).
 
