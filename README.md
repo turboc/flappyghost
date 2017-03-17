@@ -40,14 +40,12 @@ Então, vamos à prática.
 
 Quando executar o arquivo gdx-setup.jar, irá ser exibida uma janela como esta:
 
-| Imagem 1 - Configuração inicial do projeto |
-
-| -------------------------------------------|
-
-| ![image](https://cloud.githubusercontent.com/assets/8375336/23878992/41bb5f34-0829-11e7-97cd-469209e89186.png)  |
+Imagem 1: Configuração inicial do projeto
+![image](https://cloud.githubusercontent.com/assets/8375336/23878992/41bb5f34-0829-11e7-97cd-469209e89186.png) 
 
 
 Fazer o preenchimento das informações da seguinte forma:
+Imagem 2:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879113/e975757a-0829-11e7-9e41-649a2ef22738.png)
 
 Após o preenchimento dos campos, acionar o botão “Generate” e clicar em “SIM”:
