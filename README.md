@@ -40,6 +40,7 @@ Então, vamos à prática.
 
 Quando executar o arquivo gdx-setup.jar, irá ser exibida uma janela como esta:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23878992/41bb5f34-0829-11e7-97cd-469209e89186.png)
+-> imagem1 <-
 
 Fazer o preenchimento das informações da seguinte forma:
 ![image](https://cloud.githubusercontent.com/assets/8375336/23879113/e975757a-0829-11e7-9e41-649a2ef22738.png)
