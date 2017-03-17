@@ -39,9 +39,12 @@ Então, vamos à prática.
 ### preparação do projeto
 
 Quando executar o arquivo gdx-setup.jar, irá ser exibida uma janela como esta:
+
 | Imagem 1 - Configuração inicial do projeto |
+
 | -------------------------------------------|
-| ![image](https://cloud.githubusercontent.com/assets/8375336/23878992/41bb5f34-0829-11e7-97cd-469209e89186.png) |
+
+| ![image](https://cloud.githubusercontent.com/assets/8375336/23878992/41bb5f34-0829-11e7-97cd-469209e89186.png)  |
 
 
 Fazer o preenchimento das informações da seguinte forma:
