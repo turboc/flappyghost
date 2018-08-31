@@ -1107,10 +1107,6 @@ Clicamos em Run ![image](https://cloud.githubusercontent.com/assets/8375336/2390
 
 Neste caso, utilizarei o próprio dispositivo Android:
 
-
-![image](https://cloud.githubusercontent.com/assets/8375336/23905670/8d3f29fa-08aa-11e7-9d64-d05d24fa6a13.png)
-
-
 E temos o nosso game rodando:
 
 ![image](https://cloud.githubusercontent.com/assets/8375336/23905747/d0c68574-08aa-11e7-8973-35b84e5388ba.png)
